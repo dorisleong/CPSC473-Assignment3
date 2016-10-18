@@ -12,40 +12,45 @@
       <h1 class="ui dividing header">Assignment 3</h1>
 
       <div class="ui container">
+        <div class="avg">
             <h2>Calculate Average</h2>
-              <p>Enter a set of numbers (separated by a space):</p>
+              <p>Enter a set of numbers (separated by a comma):</p>
               <form action="avg" method="POST">
                 <input type="text" name="avgNums" />
                 <input type="submit" value="Calculate"/>
               </form>
               <p><span id="avgResult"></span></p>
-
+        </div>
+        <div class="max">
             <h2>Find Max</h2>
-              <p>Enter a set of numbers (separated by a space):</p>
+              <p>Enter a set of numbers (separated by a comma):</p>
               <form action="max" method="POST">
                 <input type="text" name="maxNums" />
                 <input type="submit" value="Find Max"/>
               </form>
               <p><span id="maxResult"></span></p>
-
+        </div>
+        <div class="even">
             <h2>Set Contains At Least One Even Number?</h2>
-              <p>Enter a set of numbers (separated by a space):</p>
+              <p>Enter a set of numbers (separated by a comma):</p>
               <form action="even" method="POST">
                 <input type="text" name="evenNums" />
                 <input type="submit" value="Check Set"/>
               </form>
               <p><span id="evenResult"></span></p>
-
+        </div>
+        <div class="allEven">
             <h2>Set Contains All Even Numbers?</h2>
-              <p>Enter a set of numbers (separated by a space):</p>
+              <p>Enter a set of numbers (separated by a comma):</p>
               <form action="allEven" method="POST">
                 <input type="text" name="allEvenNums" />
                 <input type="submit" value="Check Set"/>
               </form>
               <p><span id="allEvenResult"></span></p>
-
+        </div>
+        <div class="arrayContains">
             <h2>Set Contains The Given Word?</h2>
-              <p>Enter a set of words (separated by a space):</p>
+              <p>Enter a set of words (separated by a comma):</p>
               <form action="arrayContains" method="POST">
                 <input type="text" name="containsArray" />
                 <p>Enter a single word to be compared:</p>
@@ -53,9 +58,10 @@
                 <input type="submit" value="Check Set"/>
               </form>
               <p><span id="arrayContainsResult"></span></p>
-
+        </div>
+        <div class="arrayContainsNTimes">
             <h2>Set Contains The Given Word A Least N Times?</h2>
-              <p>Enter a set of words (separated by a space):</p>
+              <p>Enter a set of words (separated by a comma):</p>
               <form action="arrayContainsNTimes" method="POST">
                 <input type="text" name="containsNTimesArray" />
                 <p>Enter a single word to be compared:</p>
@@ -65,7 +71,7 @@
                 <input type="submit" value="Check Set"/>
               </form>
               <p><span id="arrayContainsNTimesResult"></span></p>
-
+        </div>
       </div>
     </div>
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>

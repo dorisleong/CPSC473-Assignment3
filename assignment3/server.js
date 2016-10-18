@@ -2,34 +2,8 @@ var express = require("express"),
     http = require("http"),
     bodyParser = require('body-parser'),
     array = require('./array.js'),
-    app = express(),
-    toDos = [
-        { 
-            "description" : "Get groceries",
-            "tags"  : [ "shopping", "chores" ]
-        },
-        { 
-            "description" : "Make up some new ToDos",
-            "tags"  : [ "writing", "work" ]
-        },
-        {
-            "description" : "Prep for Monday's class",
-            "tags"  : [ "work", "teaching" ]
-        },
-        { 
-            "description" : "Answer emails",
-            "tags"  : [ "work" ]
-        },
-        { 
-            "description" : "Take Gracie to the park",
-            "tags"  : [ "chores", "pets" ]
-        },
-        { 
-            "description" : "Finish writing this book",
-            "tags"  : [ "writing", "work" ]
-        }
-    ];
-        
+    app = express();
+
 app.use(express.static(__dirname + "/client"));
 
 // tell Express to parse incoming
@@ -39,37 +13,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 http.createServer(app).listen(3000);
 
-// This route takes the place of our
-// todos.json file in our example from
-// Chapter 5
-app.get("/todos.json", function (req, res) {
-    res.json(toDos);
-});
-
-app.post("/todos", function (req, res) {
-    // the object is now stored in req.body
-    var newToDo = req.body;
-
-    console.log(newToDo);
-
-    toDos.push(newToDo);
-
-    // send back a simple object
-    res.json({"message":"You posted to the server!"});
-});
-
 app.post('/avg', function(req, res) {
-    var nums = req.body;
+    var nums = req.body.avgNums;
     res.send("Average = " + array.avg(nums));
 });
 
 app.post('/max', function(req, res) {
-    var nums = req.body;
+    var nums = req.body.maxNums;
     res.send("Max = " + array.max(nums));
 });
 
 app.post('/even', function(req, res) {
-    var nums = req.body;
+    var nums = req.body.evenNums;
     if (array.even(nums)) {
         res.send("Set contains an even number.");
     } else {
@@ -78,7 +33,7 @@ app.post('/even', function(req, res) {
 });
 
 app.post('/allEven', function(req, res) {
-    var nums = req.body;
+    var nums = req.body.allEvenNums;
     if (array.allEven(nums)) {
         res.send("Set contains all even numbers.");
     } else {
@@ -87,8 +42,9 @@ app.post('/allEven', function(req, res) {
 });
 
 app.post('/arrayContains', function(req, res) {
-    var strArray = req.body;
-    if (array.arrayContains(strArray)) {
+    var strArray = req.body.containsArray;
+    var strQuery = req.body.containsQuery;
+    if (array.arrayContains(strArray, strQuery)) {
         res.send("Set contains given word.");
     } else {
         res.send("Set does not contain given word.");
@@ -96,8 +52,10 @@ app.post('/arrayContains', function(req, res) {
 });
 
 app.post('/arrayContainsNTimes', function(req, res) {
-    var strArray = req.body;
-    if (array.arrayContainsNTimes(strArray)) {
+    var strArray = req.body.containsNTimesArray;
+    var strQuery = req.body.containsNTimesQuery;
+    var n = req.body.nTimes;
+    if (array.arrayContainsNTimes(strArray, strQuery, n)) {
         res.send("Set contains given word of the speficified number of times");
     } else {
         res.send("Set does not contain given word of the speficified number of times");
