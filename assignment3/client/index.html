@@ -8,31 +8,66 @@
   </head>
 
   <body>
-    <header>
-      <h1>Assignment 3</h1>
-    </header>
+    <div class="ui container">
+      <h1 class="ui dividing header">Assignment 3</h1>
 
-    <main>
-      <div class="container">
-        <div class="tabs">
-          <a href="#"><span class="active">Newest</span></a>
-          <a href="#"><span>Oldest</span></a>
-          <a href="#"><span>Tags</span></a>
-          <a href="#"><span>Add</span></a>
-        </div>
-        <div class="content">
-          <ul>
-            <li>Get Groceries</li>
-            <li>Make up some new ToDos</li>
-            <li>Prep for Monday's class</li>
-            <li>Answer recruiter emails on LinkedIn</li>
-            <li>Take Gracie to the park</li>
-            <li>Finish writing book</li>
-          </ul>
-        </div>
+      <div class="ui container">
+            <h2>Calculate Average</h2>
+              <p>Enter a set of numbers (separated by a space):</p>
+              <form action="avg" method="POST">
+                <input type="text" name="avgNums" />
+                <input type="submit" value="Calculate"/>
+              </form>
+              <p><span id="avgResult"></span></p>
+
+            <h2>Find Max</h2>
+              <p>Enter a set of numbers (separated by a space):</p>
+              <form action="max" method="POST">
+                <input type="text" name="maxNums" />
+                <input type="submit" value="Find Max"/>
+              </form>
+              <p><span id="maxResult"></span></p>
+
+            <h2>Set Contains At Least One Even Number?</h2>
+              <p>Enter a set of numbers (separated by a space):</p>
+              <form action="even" method="POST">
+                <input type="text" name="evenNums" />
+                <input type="submit" value="Check Set"/>
+              </form>
+              <p><span id="evenResult"></span></p>
+
+            <h2>Set Contains All Even Numbers?</h2>
+              <p>Enter a set of numbers (separated by a space):</p>
+              <form action="allEven" method="POST">
+                <input type="text" name="allEvenNums" />
+                <input type="submit" value="Check Set"/>
+              </form>
+              <p><span id="allEvenResult"></span></p>
+
+            <h2>Set Contains The Given Word?</h2>
+              <p>Enter a set of words (separated by a space):</p>
+              <form action="arrayContains" method="POST">
+                <input type="text" name="containsArray" />
+                <p>Enter a single word to be compared:</p>
+                <input type="text" name="containsQuery" />
+                <input type="submit" value="Check Set"/>
+              </form>
+              <p><span id="arrayContainsResult"></span></p>
+
+            <h2>Set Contains The Given Word A Least N Times?</h2>
+              <p>Enter a set of words (separated by a space):</p>
+              <form action="arrayContainsNTimes" method="POST">
+                <input type="text" name="containsNTimesArray" />
+                <p>Enter a single word to be compared:</p>
+                <input type="text" name="containsNTimesQuery" />
+                <p>Enter minimum number of occurances:</p>
+                <input type="text" name="nTimes" />
+                <input type="submit" value="Check Set"/>
+              </form>
+              <p><span id="arrayContainsNTimesResult"></span></p>
+
       </div>
-    </main>
-
+    </div>
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="javascripts/app.js"></script>
   </body>
