@@ -1,8 +1,10 @@
 var main = function () {
     "use strict";
-    var calcAvg = function() {
+    $('#avg').click(function () {
+        var avgInput = $(document.avgForm);
 
     };
+    
 };
 
 $(document).ready(main);

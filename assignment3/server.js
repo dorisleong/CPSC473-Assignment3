@@ -12,10 +12,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 http.createServer(app).listen(3000);
+console.log("Server running on port 3000");
 
 app.post('/avg', function(req, res) {
-    var nums = req.body.avgNums;
-    res.send("Average = " + array.avg(nums));
+    var nums = req.body;
+    res.send(JSON.stringify(array.avg(nums)));
 });
 
 app.post('/max', function(req, res) {
