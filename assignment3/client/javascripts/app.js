@@ -1,36 +1,63 @@
 var main = function () {
     "use strict";
-    $('#avg').click(function () {
-        var avgInput = $(document.avgForm);
 
+    var sendAJAX = function (url, data, idResult) {
         $.ajax({
-            url: "/avg",
+            url: url,
             dataType: 'json',
-            contentType: "application/json",
             type: "POST",
-            data: JSON.stringify(avgInput.serializeArray()),
+            data: data,
+            contentType: "application/json",
             success: function (response) {
-                $("#avgResult").text(response.result);
+                $(idResult).text(response.result);
             }
-        })
-    });
-    
-    $('#max').click(function () {
-        var avgInput = $(document.avgForm);
+        });
+    }
 
-        $.ajax({
-            url: "/max",
-            dataType: 'json',
-            contentType: "application/json",
-            type: "POST",
-            data: JSON.stringify(avgInput.serializeArray()),
-            success: function (response) {
-                $("#maxResult").text(response.result);
-            }
-        })
+    $('#avg').on('click', function (event) {
+        var input = $('#avgNums').val().split(',');
+        convertToInt(input);
+        sendAJAX('/avg', JSON.stringify({array: input}), '#avgResult');
     });
 
-    
+    $('#max').on('click', function (event) {
+        var input = $('#maxNums').val().split(',');
+        convertToInt(input);
+        sendAJAX('/max', JSON.stringify({array: input}), '#maxResult');
+    });
+
+    $('#even').on('click', function (event) {
+        var input = $('#evenNums').val().split(',');
+        convertToInt(input);
+        sendAJAX('/even', JSON.stringify({array: input}), '#evenResult');
+    });
+
+    $('#allEven').on('click', function (event) {
+        var input = $('#allEvenNums').val().split(',');
+        convertToInt(input);
+        sendAJAX('/allEven', JSON.stringify({array: input}), '#allEvenResult');
+    });
+
+    $('#arrayContains').on('click', function (event) {
+        var inputArray = $('#containsArray').val().split(',');
+        var inputQuery = $('#containsQuery').val();
+        sendAJAX('/arrayContains', JSON.stringify({array: inputArray, query: inputQuery}), '#arrayContainsResult');
+    });
+
+    $('#arrayContainsNTimes').on('click', function (event) {
+        var inputArray = $('#containsNTimesArray').val().split(',');
+        var inputQuery = $('#containsNTimesQuery').val();
+        var inputN = parseInt($('#nTimes').val(), 10);
+        sendAJAX('/arrayContainsNTimes', JSON.stringify({array: inputArray, query: inputQuery, n: inputN}), '#arrayContainsNTimesResult');
+    });
+
+    var convertToInt = function (array) {
+        var i = 0;
+        for (; i<array.length; i++) {
+            array[i] = parseInt(array[i], 10);
+        }
+        return array;
+    };
 };
 
 $(document).ready(main);
