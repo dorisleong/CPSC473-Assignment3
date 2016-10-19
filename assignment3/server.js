@@ -15,50 +15,31 @@ http.createServer(app).listen(3000);
 console.log("Server running on port 3000");
 
 app.post('/avg', function(req, res) {
-    var nums = req.body;
-    res.send(JSON.stringify(array.avg(nums)));
+    var result = array.avg(req.body.array);
+    res.json({result: result});
 });
 
 app.post('/max', function(req, res) {
-    var nums = req.body.maxNums;
-    res.send("Max = " + array.max(nums));
+    var result = array.max(req.body.array);
+    res.json({result: result});
 });
 
 app.post('/even', function(req, res) {
-    var nums = req.body.evenNums;
-    if (array.even(nums)) {
-        res.send("Set contains an even number.");
-    } else {
-        res.send("Set does not contain an even number.");
-    }
+    var result = array.even(req.body.array);
+    res.json({result: result});
 });
 
 app.post('/allEven', function(req, res) {
-    var nums = req.body.allEvenNums;
-    if (array.allEven(nums)) {
-        res.send("Set contains all even numbers.");
-    } else {
-        res.send("Set contains an odd number.");
-    }
+    var result = array.allEven(req.body.array);
+    res.json({result: result});
 });
 
 app.post('/arrayContains', function(req, res) {
-    var strArray = req.body.containsArray;
-    var strQuery = req.body.containsQuery;
-    if (array.arrayContains(strArray, strQuery)) {
-        res.send("Set contains given word.");
-    } else {
-        res.send("Set does not contain given word.");
-    }
+    var result = array.arrayContains(req.body.array, req.body.query);
+    res.json({result: result});
 });
 
 app.post('/arrayContainsNTimes', function(req, res) {
-    var strArray = req.body.containsNTimesArray;
-    var strQuery = req.body.containsNTimesQuery;
-    var n = req.body.nTimes;
-    if (array.arrayContainsNTimes(strArray, strQuery, n)) {
-        res.send("Set contains given word of the speficified number of times");
-    } else {
-        res.send("Set does not contain given word of the speficified number of times");
-    }
+    var result = array.arrayContainsNTimes(req.body.array, req.body.query, req.body.n);
+    res.json({result: result});
 });
